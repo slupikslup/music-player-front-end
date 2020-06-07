@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {Router, Route, Link, Switch} from 'react-router-dom';
+import createHistory from "history/createBrowserHistory";
+import "./App.css"
+import {useState, useRef} from 'react'
+import Mainpage from './pages/main'
+import { createStore, applyMiddleware } from 'redux';
+import { Provider , connect} from 'react-redux';
+import thunk from 'redux-thunk';
+import UploadPage from './pages/upload.js'
+import LoginPage from './pages/login'
+import history from './history'
+import store from './reducers/store'
+import PlaylistsPage from './pages/playlists'
+import addedTracksPage from './pages/addedTracks'
+import AddTo from './components/addTo'
+import PlaylistPage from './pages/playlist'
+import Player from './components/MainPlayer'
+store.dispatch({type: "CHECK_LOGIN"})
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const player = ({isItPlayed}) => {
+   if(isItPlayed){
+       return <Player/>
+   }else {
+       return null
+   }
 }
+const CPlayer  = connect( s =>{return  {isItPlayed: s.trackChange.isItPlaying} } )(player)
+const App = () => {
+     return (
+    <Provider store={store}>
+    <Router  history={history}>
+    <Switch>
+    <Route path="/uploadfile" component={UploadPage}  exact/>
+    <Route path="/" component={Mainpage} exact/>
+    <Route path="/playlists" component={PlaylistsPage} exact/>
+    <Route path="/login" component={LoginPage} exact/>
+    <Route path="/tracks" component={addedTracksPage} exact/>
+    <Route path="/playlist/:playlist" component={PlaylistPage} exact/>
+    <Route path="/addTo" component={AddTo} exact/>
+    </Switch>
+    <CPlayer/>
+    </Router>
+    </Provider>
+    )
 
-export default App;
+   
+}
+export default App
