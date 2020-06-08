@@ -32,7 +32,7 @@ const LoginPage = (p) => {
           />
           <i
             className={eyeClass ? "fa fa-eye-slash" : "fa fa-eye"}
-            style={{ color: "#671ca0", "font-size": "20px" }}
+            style={{ color: "#671ca0", "fontSize": "20px" }}
             onMouseDown={() => {
               setEyeClass(!eyeClass);
               setPassType(!passType);
@@ -45,10 +45,10 @@ const LoginPage = (p) => {
             var res = await actionReg(login, password, e);
             e.preventDefault();
             if (res) {
-              history.push("/");
+              window.location.pathname = '/'
             }
           }}
-          style={{ 'background-color': 'rgb(103, 28, 160)'}}
+          style={{ 'backgroundColor': 'rgb(103, 28, 160)'}}
           className="btn  btn-primary login-btn"
         >
           Register
@@ -59,10 +59,10 @@ const LoginPage = (p) => {
             var res = await actionLogin(login, password, e);
             e.preventDefault();
             if (res) {
-              history.push("/");
+              window.location.pathname = '/'
             }
           }}
-          style={{ 'background-color': 'rgb(103, 28, 160)'}}
+          style={{ 'backgroundColor': 'rgb(103, 28, 160)'}}
           className="btn  btn-primary login-btn"
         >
           Login

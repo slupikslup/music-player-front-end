@@ -91,15 +91,22 @@ const UploadPage = () => {
         type="button"
         className="btn btn-primary"
         style={{ "backgroundColor": "#671ca0" }}
-        onClick={() => history.push("/")}
       >
-        Go main
+          <a  className="goMain" href='/'>Go back</a>
       </button></>)
       :
       <h3>
           You must be logged in to upload something
           <br />
-          <a href="/login">Click here for login</a>
+          <a href="/login">Click here for login</a><br/>
+          <button
+        type="button"
+        className="btn btn-primary"
+        style={{ "backgroundColor": "#671ca0" }}
+      
+      >
+        <a  className="goMain" href='/'>Go back</a>
+      </button>
         </h3>
       }
      

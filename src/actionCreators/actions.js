@@ -19,14 +19,8 @@ export default  {
          playTrack : (trackIndex  , id ) => {
             store.dispatch({ type: "PLAY_TRACK", index:  trackIndex, id: id});
         },
-         shuffle : () => {
-            store.dispatch({ type: "SHUFFLE" });
-        },
          setPlay : (boolean) => {
             store.dispatch({ type: "SET_PLAYER_PLAY", isItPlaying: boolean });
-        },
-        noshuffle : (playlist = []) => {
-            store.dispatch({type:'SET_NOSHUFFLE_PLAYLIST' , noshuffle: playlist})
         }
 }
 

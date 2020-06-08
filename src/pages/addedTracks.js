@@ -54,7 +54,7 @@ const AddedTracksPage = p => {
   }
   useEffect(() => req(), [])
     return (<>
-        <CHeader/>
+        
         <Main media={media}/>
         <Player/>
           </>

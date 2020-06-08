@@ -38,15 +38,15 @@ const MainPage = () => {
                     })
                   var res = await promise.json()
                   setMedia(() => {
-                  return  res.data.getAllMedia.map((el, key) => <MiniPlayer key={key} title={el.title} artist={el.artist} filename={el.filename} index={el.id} playlist={res.data.getAllMedia} indexInPlaylist={key}/>)
+                  return  res.data.getAllMedia.map((el, key) => <MiniPlayer key={key}  title={el.title} artist={el.artist} filename={el.filename} index={el.id} playlist={res.data.getAllMedia} indexInPlaylist={key}/>)
                   })
                   
-                  return null
+                  // return null
           }
           req()
         }, [])
     return (<>
-        <CHeader/>
+       
         <Main media={media}/>  
           </>
       )

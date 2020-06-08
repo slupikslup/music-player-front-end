@@ -16,6 +16,7 @@ import addedTracksPage from './pages/addedTracks'
 import AddTo from './components/addTo'
 import PlaylistPage from './pages/playlist'
 import Player from './components/MainPlayer'
+import Header from './layout/header'
 store.dispatch({type: "CHECK_LOGIN"})
 
 const player = ({isItPlayed}) => {
@@ -25,22 +26,22 @@ const player = ({isItPlayed}) => {
        return null
    }
 }
-const CPlayer  = connect( s =>{return  {isItPlayed: s.trackChange.isItPlaying} } )(player)
+const CPlayer  = connect( s => {return  {isItPlayed: s.trackChange.isItPlaying} } )(player)
 const App = () => {
      return (
     <Provider store={store}>
     <Router  history={history}>
-    <Switch>
-    <Route path="/uploadfile" component={UploadPage}  exact/>
+    <Header/> 
+       <Switch>
+            <Route path="/uploadfile" component={UploadPage}  exact/>
     <Route path="/" component={Mainpage} exact/>
     <Route path="/playlists" component={PlaylistsPage} exact/>
     <Route path="/login" component={LoginPage} exact/>
     <Route path="/tracks" component={addedTracksPage} exact/>
     <Route path="/playlist/:playlist" component={PlaylistPage} exact/>
-    <Route path="/addTo" component={AddTo} exact/>
     </Switch>
-    <CPlayer/>
     </Router>
+    <CPlayer/>
     </Provider>
     )
 

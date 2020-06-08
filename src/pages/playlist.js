@@ -58,7 +58,7 @@ artist
                        }
               useEffect(() => req(), [])
 return (<div>
-     <CHeader/>
+    
         <Main media={media}/>
 </div>)
 }

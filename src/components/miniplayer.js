@@ -79,22 +79,19 @@ const MiniPlayer = ({
   indexInPlaylist,
   currentTime,
   id,
-  shuffle,
+
   isplaying,
   playlistId,
   current
 }) => {
   const [adding, setAdding] = useState(false);
   const [duration, setDuration] = useState();
-  // (async () => await tool.noshuffle(playlist))()
   const play = async () => {
     if (id == index) {
       tool.play();
       simulateKey(13);
     } else if (id != index) {
-      // await tool.noshuffle(p.playlist)
       await tool.playlist(playlist);
-      console.log(playlist);
       await tool.pause();
       await tool.playTrack(indexInPlaylist, index);
       await tool.play();
@@ -181,7 +178,7 @@ const MiniPlayer = ({
         {window.location.pathname == "/tracks" ? (
           <i
             className="fa fa-times miniplayer-tool"
-            style={{ "margin-left": "10px", "font-size": "20px" }}
+            style={{ "marginleft": "10px", "fontSize": "20px" }}
             onClick={() => deleteFromMedia(index)}
           />
         ) : (
@@ -190,7 +187,7 @@ const MiniPlayer = ({
         {playlistId ? (
           <i
             className="fa fa-times miniplayer-tool"
-            style={{ "margin-left": "10px", "font-size": "20px" }}
+            style={{ "marginLeft": "10px", "fontSize": "20px" }}
             onClick={() => deleteFromPlaylist(playlistId, index)}
           />
         ) : (

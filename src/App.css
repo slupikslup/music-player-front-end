@@ -203,6 +203,10 @@ body {
   
     margin-right: 10px;
   }
+  .goMain:hover {
+    color:white;
+    text-decoration: none;
+  }
   .duration {
     margin-left: 410px;
     font-size: 17px;
@@ -1152,7 +1156,7 @@ color:white
   }
   .miniplayer-tool {
     margin-left: 10px;
-    font-size: 10px;
+    font-size: 11px;
   }
   .miniplayer-tools {
     margin-right: 10px;

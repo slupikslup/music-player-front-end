@@ -8,9 +8,6 @@ const trackChange = (state, action) => {
             currentTime: '0:00',
             isItPlaying: false,
             duration: '' ,
-            noshuffle: null,
-            repeat: false,
-            shuffle: false,
             isPlaying: false,
             playingTrack: {id: null, index: null},
             playlist: null
@@ -37,16 +34,7 @@ const trackChange = (state, action) => {
         const {duration} = action
         return {...state, duration}
     }
-    if(action.type == 'VOLUME_CHANGE'){
-        const {muted, volume} = action
-        return {...state, muted, volume}
-    }
-    if(action.type == 'SHUFFLE'){
-        return {...state, shuffle: !state.shuffle}
-    }
-    if(action.type == 'REPEAT'){
-        return {...state, repeat: !state.repeat}
-    }
+
     if(action.type == 'PLAY'){
         return {...state, isPlaying: true}
     }
@@ -56,10 +44,7 @@ const trackChange = (state, action) => {
     if(action.type == 'SET_PLAYER_PLAY'){
         return {...state, isItPlaying: action.isItPlaying}
     }
-    if(action.type == 'SET_NOSHUFFLE_PLAYLIST'){
-        const {noshuffle} = action
-        return {...state, noshuffle: noshuffle}
-    }
+
     return state
 }
 export default trackChange

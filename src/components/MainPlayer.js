@@ -199,16 +199,7 @@ ${parseInt(e.target.currentTime / 60)}:${
       audio.play();
     }
   };
-  const doShuffle =async () => {
-   if(shuffle){
-     await tool.shuffle()
-     console.log('noshuffle' ,noshuffle)
-   }else{
-     await tool.shuffle()
-     await tool.playlist(shuffleFunc(playlist))
-     console.log('playlist', playlist)
-   }
-  };
+
   return (
     <>
       <div
@@ -227,11 +218,6 @@ ${parseInt(e.target.currentTime / 60)}:${
               )}
 
           <i className="fa fa-forward player-btn" onClick={next} />
-          <i
-            className="fa fa-random player-btn"
-            style={{ color: shuffle ? "#671ca0" : "black" }}
-            onClick={doShuffle}
-          />
           <i
             className="fa fa-refresh player-btn"
             onClick={() => {
@@ -337,7 +323,7 @@ ${parseInt(e.target.currentTime / 60)}:${
               <i
                 className="fa fa-list-ul fa-ico list"
                 onClick={() => setAdding(!adding)}
-                style={{ "margin-left": "10px"}}
+                style={{ "marginLeft": "10px"}}
               />
             </>
           ) : (
@@ -352,17 +338,13 @@ ${parseInt(e.target.currentTime / 60)}:${
 };
 
 const CPlayer = connect((s) => {
-  // console.log(`noshuffle`,  s.trackChange.noshuffle)
-  // console.log('index',s.trackChange.playingTrack.index, 'id', s.trackChange.playingTrack.id)
   return {
     playlist: s.trackChange.playlist,
     current: s.trackChange.playingTrack.index,
     isplaying: s.trackChange.isPlaying,
-    shuffle: s.trackChange.shuffle,
     duraTion: s.trackChange.duration,
     toggleStop: s.trackChange.doToggleStop,
     currentId: s.trackChange.playingTrack.id,
-    noshuffle: s.trackChange.noshuffle,
   };
 })(Player);
 
